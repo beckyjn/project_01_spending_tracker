@@ -49,6 +49,24 @@ class Transaction
     return Transaction.map_items(transaction_data)
   end
 
+  def self.filter_by_tag(tag_id)
+    sql = "SELECT * FROM transactions
+    INNER JOIN tags ON tags.id = transactions.tag_id
+    WHERE tags.id = $1"
+    values = [tag_id]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
+
+  def self.filter_by_merchant(merchant_id)
+    sql = "SELECT * FROM transactions
+    INNER JOIN merchants ON merchants.id = transactions.merchant_id
+    WHERE merchants.id = $1"
+    values = [merchant_id]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
+
   def self.map_items(transaction_data)
     return transaction_data.map { |transaction| Transaction.new(transaction) }
   end
