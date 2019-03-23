@@ -1,13 +1,13 @@
 require('sinatra')
 require('sinatra/contrib/all')
-
-require_relative('../models/account.rb')
-require_relative('../models/merchant.rb')
-require_relative('../models/tag.rb')
+#
+# require_relative('../models/account.rb')
+# require_relative('../models/merchant.rb')
+# require_relative('../models/tag.rb')
 require_relative('../models/transaction.rb')
 also_reload('../models/*')
 
-get '/spending-tracker/transactions/' do #index
+get '/spending-tracker/transactions' do #index
   @transactions = Transaction.all
   erb(:"transactions/index")
 end
@@ -19,7 +19,26 @@ get '/spending-tracker/transactions/new' do #new
   erb(:"transactions/new")
 end
 
+post '/spending-tracker/transactions' do #create
+  transaction = Transaction.new(params)
+  transaction.save
+  redirect to("/spending-tracker/transactions")
+end
+
 get '/spending-tracker/transactions/:id' do #show
   @transaction = Transaction.find(params[:id])
-  erb(:"transaction/show")
+  erb(:"transactions/show")
+end
+
+get '/spending-tracker/transactions/:id/edit' do #edit
+  @transaction = Transaction.find(params[:id])
+  @tags = Tag.all
+  @merchants = Merchant.all
+  @accounts = Account.all
+  erb(:"transactions/edit")
+end
+
+post '/spending-tracker/transactions/:id' do #update
+  Transaction.new( params ).update
+  redirect to("/spending-tracker/transactions")
 end

@@ -10,7 +10,8 @@
 <tr><td><%= transaction.show_merchant_name %> </td>
   <td><%= transaction.show_tag_name %></td>
   <td><%= transaction.spend %></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">More details</a>
+  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">More details</a></td>
+  <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Edit transaction</a></td>
 </tr>
 <% end %>
 </table>
