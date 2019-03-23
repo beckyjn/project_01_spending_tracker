@@ -1,0 +1,16 @@
+<p>Here are all your transactions!</p>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Tag</th>
+    <th>Spent</th>
+  </tr>
+<% for transaction in @transactions %>
+<tr><td><%= transaction.show_merchant_name %> </td>
+  <td><%= transaction.show_tag_name %></td>
+  <td><%= transaction.spend %></td>
+  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">More details</a>
+</tr>
+<% end %>
+</table>

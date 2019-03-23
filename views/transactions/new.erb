@@ -1,0 +1,28 @@
+<p> add a new transaction</p>
+
+<form method="post" action="/spending-tracker/transactions/">
+  <label for="merchant">Where did you spend money?</label>
+  <select id="merchant" name="merchant_id">
+    <% for merchant in @merchants %>
+      <option value="<%= merchant.id%>">
+        <%= merchant.name.capitalize%>
+      </option>
+    <% end %>
+    </select>
+<p>
+    <label for="tag">What did you buy?</label>
+    <select id="tag" name="tag_id">
+      <% for tag in @tags %>
+        <option value="<%= tag.id%>">
+          <%= tag.name.downcase%>
+        </option>
+      <% end %>
+    </select>
+<p>
+    <label for="spend">How much did you spend?</label>
+    <input type="number" id="spend" name="spend">
+<p>
+  <input type="submit" value="Add to your transactions"
+
+
+</form>

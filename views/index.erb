@@ -1,16 +1,3 @@
-<p>Here are all your transactions!</p>
+<h1> Welcome to the spending tracker!</h1>
 
-<table>
-  <tr>
-    <th>Shop</th>
-    <th>Tag</th>
-    <th>Spent</th>
-  </tr>
-<% for transaction in @transactions %>
-<tr><td><%= transaction.show_merchant_name %> </td>
-  <td><%= transaction.show_tag_name %></td>
-  <td><%= transaction.spend %></td>
-  <td><a href="/spending-tracker/<%=transaction.id%>">More details</a>
-</tr>
-<% end %>
-</table>
+<p>Use the bar above to find your way around</p>
