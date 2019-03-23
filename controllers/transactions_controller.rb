@@ -42,3 +42,9 @@ post '/spending-tracker/transactions/:id' do #update
   Transaction.new( params ).update
   redirect to("/spending-tracker/transactions")
 end
+
+post '/spending-tracker/transactions/:id/delete' do #destroy
+  transaction = Transaction.find(params[:id])
+  transaction.delete
+  redirect to("/spending-tracker/transactions")
+end

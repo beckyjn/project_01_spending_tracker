@@ -10,8 +10,13 @@
 <tr><td><%= transaction.show_merchant_name %> </td>
   <td><%= transaction.show_tag_name %></td>
   <td><%= transaction.spend %></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">More details</a></td>
+  <td><a href="/spending-tracker/transactions/<%=transaction.id%> ">More details </a></td>
   <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Edit transaction</a></td>
+  <td>
+    <form method="post" action="/spending-tracker/transactions/<%=transaction.id%>/delete">
+    <input type="submit" value="Delete transaction"/>
+    </form>
+  </td>
 </tr>
 <% end %>
 </table>
