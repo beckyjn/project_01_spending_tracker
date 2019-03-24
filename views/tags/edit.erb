@@ -1,0 +1,7 @@
+<p>edit this tag</p>
+
+<form method="post" action="/spending-tracker/tags/<%= @tag.id %>">
+  <label for="name">Name of tag</label>
+  <input type="text" id="name" name="name" value="<%=@tag.name%>">
+  <input type ="submit" value="save changes">
+  </form>

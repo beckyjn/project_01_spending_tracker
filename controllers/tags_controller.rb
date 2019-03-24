@@ -21,3 +21,24 @@ post '/spending-tracker/tags' do #create
   @tag.save
   redirect to('/spending-tracker/tags')
 end
+
+get '/spending-tracker/tags/:id' do #show
+  @tag = Tag.find(params[:id])
+  erb(:"tags/show")
+end
+
+get '/spending-tracker/tags/:id/edit' do #edit
+  @tag = Tag.find(params[:id])
+  erb(:"tags/edit")
+end
+
+post '/spending-tracker/tags/:id' do #update
+  Tag.new( params ).update
+  redirect to("/spending-tracker/tags")
+end
+
+post '/spending-tracker/tags/:id/delete' do #destroy
+  tag = Tag.find(params[:id])
+  tag.delete
+  redirect to("/spending-tracker/tags")
+end
