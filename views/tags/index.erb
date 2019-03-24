@@ -1,0 +1,15 @@
+<p>Here are all the tags you've added</p>
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Total spend</th>
+  </tr>
+  <% for tag in @tags %>
+  <tr><td><%= tag.name %> </td>
+  <td><%= tag.total_spend %></td>
+  <td><a href="/spending-tracker/tags/<%=tag.id%>">view more</a></td>
+    <td><a href="/spending-tracker/tags/<%=tag.id%>/edit">edit</a></td>
+  </tr>
+  <% end %>
+</table>
