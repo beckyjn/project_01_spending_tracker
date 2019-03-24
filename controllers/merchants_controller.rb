@@ -19,10 +19,26 @@ end
 post '/spending-tracker/merchants' do #create
   @merchant = Merchant.new(params)
   @merchant.save
-  erb(:"merchants/created")
+  redirect to('/spending-tracker/merchants')
 end
 
 get '/spending-tracker/merchants/:id' do #show
   @merchant = Merchant.find(params[:id])
   erb(:"merchants/show")
+end
+
+get '/spending-tracker/merchants/:id/edit' do #edit
+  @merchant = Merchant.find(params[:id])
+  erb(:"merchants/edit")
+end
+
+post '/spending-tracker/merchants/:id' do #update
+  Merchant.new( params ).update
+  redirect to("/spending-tracker/merchants")
+end
+
+post '/spending-tracker/merchants/:id/delete' do #destroy
+  merchant = Merchant.find(params[:id])
+  merchant.delete
+  redirect to("/spending-tracker/merchants")
 end

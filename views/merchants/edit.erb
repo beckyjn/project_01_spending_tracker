@@ -1,0 +1,7 @@
+<p>edit this merchant</p>
+
+<form method="post" action="/spending-tracker/merchants/<%= @merchant.id %>">
+  <label for="name">Name of merchant</label>
+  <input type="text" id="name" name="name" value="<%=@merchant.name%>">
+  <input type ="submit" value="save changes">
+  </form>
