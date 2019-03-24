@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./transaction.rb')
 
 class Merchant
 
@@ -63,6 +64,16 @@ class Merchant
     values = [@id]
     result = SqlRunner.run(sql, values)
     return result.first['sum'].to_i
+  end
+
+  def all_transactions()
+    sql = "SELECT transactions.* from transactions
+    INNER JOIN merchants
+    ON transactions.merchant_id = merchants.id
+    WHERE transactions.merchant_id = $1"
+    values = [@id]
+    transaction_data = SqlRunner.run(sql, values)
+    transaction = Transaction.map_items(transaction_data)
   end
 
 end

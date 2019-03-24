@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./transaction.rb')
 
 class Tag
 
@@ -53,6 +54,26 @@ class Tag
   def self.delete_all
   sql = "DELETE FROM tags"
   SqlRunner.run(sql)
+  end
+
+  def total_spend()
+    sql = "SELECT SUM(transactions.spend) FROM transactions
+    INNER JOIN tags
+    ON transactions.tag_id = tags.id
+    WHERE transactions.tag_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.first['sum'].to_i
+  end
+
+  def all_transactions()
+    sql = "SELECT transactions.* from transactions
+    INNER JOIN tags
+    ON transactions.tag_id = tags.id
+    WHERE transactions.tag_id = $1"
+    values = [@id]
+    transaction_data = SqlRunner.run(sql, values)
+    transaction = Transaction.map_items(transaction_data)
   end
 
 end

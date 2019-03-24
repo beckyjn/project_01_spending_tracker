@@ -11,3 +11,8 @@ get '/spending-tracker/merchants' do #index
   @merchants = Merchant.all
   erb(:"merchants/index")
 end
+
+get '/spending-tracker/merchants/:id' do #show
+  @merchant = Merchant.find(params[:id])
+  erb(:"merchants/show")
+end

@@ -1,0 +1,20 @@
+<p>More details on this merchant</p>
+
+<p>This merchants name is: <%= @merchant.name %>.
+  You have spent £<%= @merchant.total_spend %> at this retailer.
+  On average, you spend y amount here.
+  The most common thing you buy here is z.
+</p>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Spent</th>
+  </tr>
+  <% for transaction in @merchant.all_transactions %>
+    <tr>
+      <td> <%= transaction.show_tag_name %></td>
+      <td> £<%= transaction.spend %> </td>
+  </tr>
+  <% end %>
+</table>
