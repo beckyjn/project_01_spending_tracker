@@ -1,7 +1,7 @@
-<p>More details on this merchant</p>
+<h2>More details on <%= @merchant.name %></h2>
 
-<p>This merchants name is: <%= @merchant.name %>.
-  You have spent £<%= @merchant.total_spend %> at this retailer.
+<p>
+  You have spent £<%= @merchant.total_spend %> at <%= @merchant.name %>.
   On average, you spend y amount here.
   The most common thing you buy here is z.
 </p>
