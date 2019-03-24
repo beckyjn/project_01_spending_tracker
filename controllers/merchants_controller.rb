@@ -12,6 +12,16 @@ get '/spending-tracker/merchants' do #index
   erb(:"merchants/index")
 end
 
+get '/spending-tracker/merchants/new' do #new
+  erb(:"merchants/new")
+end
+
+post '/spending-tracker/merchants' do #create
+  @merchant = Merchant.new(params)
+  @merchant.save
+  erb(:"merchants/created")
+end
+
 get '/spending-tracker/merchants/:id' do #show
   @merchant = Merchant.find(params[:id])
   erb(:"merchants/show")
