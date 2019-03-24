@@ -11,3 +11,13 @@ get '/spending-tracker/tags' do #index
   @tags = Tag.all
   erb(:"tags/index")
 end
+
+get '/spending-tracker/tags/new' do #new
+  erb(:"tags/new")
+end
+
+post '/spending-tracker/tags' do #create
+  @tag = Tag.new(params)
+  @tag.save
+  redirect to('/spending-tracker/tags')
+end
