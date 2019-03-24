@@ -55,4 +55,14 @@ class Merchant
   SqlRunner.run(sql)
   end
 
+  def total_spend()
+    sql = "SELECT SUM(transactions.spend) FROM transactions
+    INNER JOIN merchants
+    ON transactions.merchant_id = merchants.id
+    WHERE transactions.merchant_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.first['sum'].to_i
+  end
+
 end

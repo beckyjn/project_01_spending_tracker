@@ -1,0 +1,14 @@
+<p>Here are all the merchants you've added</p>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Total spend</th>
+  </tr>
+  <% for merchant in @merchants %>
+  <tr><td><%= merchant.name %> </td>
+  <td><%= merchant.total_spend %></td>
+
+  </tr>
+  <% end %>
+</table>

@@ -10,11 +10,15 @@
 <tr><td><%= transaction.show_merchant_name %> </td>
   <td><%= transaction.show_tag_name %></td>
   <td><%= transaction.spend %></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%> ">More details </a></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Edit transaction</a></td>
+  <td><form method="get" action="/spending-tracker/transactions/<%=transaction.id%>">
+  <input type="submit" value="View more"/>
+  </form></td>
+  <td><form method="get" action="/spending-tracker/transactions/<%=transaction.id%>/edit">
+  <input type="submit" value="Edit"/>
+  </form></td>
   <td>
     <form method="post" action="/spending-tracker/transactions/<%=transaction.id%>/delete">
-    <input type="submit" value="Delete transaction"/>
+    <input type="submit" value="Delete"/>
     </form>
   </td>
 </tr>
