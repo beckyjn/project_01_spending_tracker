@@ -2,10 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <title>Spending Tracker</title>
   </head>
   <body>
-    <nav>
+    <nav class="nav_bar">
       <ul>
         <li><a href="/spending-tracker/">Home</a></li>
         <li><a href="/spending-tracker/transactions">View all transactions</a></li>
@@ -16,7 +17,8 @@
         <li><a href="/spending-tracker/tags/new">Add new tag</a></li>
       </ul>
     </nav>
-
+    <div class="content">
     <%= yield %>
+    </div>
   </body>
 </html>
