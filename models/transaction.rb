@@ -11,6 +11,7 @@ class Transaction
     @merchant_id = options['merchant_id'].to_i
     @account_id = options['account_id'].to_i
     @spend = options['spend'].to_i
+  
   end
 
   def save()
