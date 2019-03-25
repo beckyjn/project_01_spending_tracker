@@ -42,6 +42,12 @@ class Merchant
   end
 
   def self.all()
+    sql = "SELECT * FROM merchants"
+    merchant_data = SqlRunner.run(sql)
+    return Merchant.map_items(merchant_data)
+  end
+
+  def self.all_by_date()
     sql = "SELECT merchants.* FROM merchants
     INNER JOIN transactions
     ON transactions.merchant_id = merchants.id

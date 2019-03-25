@@ -1,6 +1,7 @@
-<a href="/spending-tracker/merchants/new">Add new merchant</a>
+
 
 <h2>Here are all the merchants you've added</h2>
+<div class="fake_button"><a href="/spending-tracker/merchants/new">Add new merchant</a></div>
 
 <table>
   <tr>
@@ -9,7 +10,7 @@
   </tr>
   <% for merchant in @merchants %>
   <tr><td><%= merchant.name %> </td>
-  <td><%= merchant.total_spend %></td>
+  <td>£<%= merchant.total_spend %></td>
   <td><a href="/spending-tracker/merchants/<%=merchant.id%>">view more</a></td>
   </tr>
   <% end %>

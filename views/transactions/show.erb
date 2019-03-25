@@ -2,7 +2,8 @@
 
 <p>You spent £<%= @transaction.spend %>
   on <%= @transaction.show_tag_name %>
-  at <%= @transaction.show_merchant_name %>
+  at <%= @transaction.show_merchant_name %> on <%= @transaction.date_display%>
 </p>
 
-<a href="/spending-tracker/transactions/<%=@transaction.id%>/edit">Change details</a>
+<div class="fake_button">
+<a href="/spending-tracker/transactions/<%=@transaction.id%>/edit">Change details</a></div>

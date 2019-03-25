@@ -41,11 +41,17 @@ class Tag
     SqlRunner.run(sql, values)
   end
 
-  def self.all()
+  def self.all_by_date()
     sql = "SELECT tags.* FROM tags
     INNER JOIN transactions
     ON transactions.tag_id = tags.id
     ORDER BY transactions.date DESC"
+    tag_data = SqlRunner.run(sql)
+    return Tag.map_items(tag_data)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM tags"
     tag_data = SqlRunner.run(sql)
     return Tag.map_items(tag_data)
   end
@@ -77,6 +83,16 @@ class Tag
     values = [@id]
     transaction_data = SqlRunner.run(sql, values)
     transaction = Transaction.map_items(transaction_data)
+  end
+
+  def top_merchant
+    sql = "SELECT merchant_id FROM tags
+    INNER JOIN transactions ON transactions.tag_id = tags.id
+    WHERE transactions.tag_id = $1
+    ORDER BY COUNT(transactions.merchant_id) DESC LIMIT 1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.first['merchant_id']
   end
 
 end
