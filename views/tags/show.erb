@@ -10,14 +10,16 @@
   <tr>
     <th>Merchant</th>
     <th>Spent</th>
+    <th>Date</th>
   </tr>
   <% for transaction in @tag.all_transactions %>
     <tr>
       <td> <%= transaction.show_merchant_name %></td>
       <td> £<%= transaction.spend %> </td>
+      <td><%= transaction.date_display %> </td>
   </tr>
   <% end %>
 </table>
 
 <p>
-<a href="/spending-tracker/tags/<%=@tag.id%>/edit">Change details</a>
+<div class="fake_button"><a href="/spending-tracker/tags/<%=@tag.id%>/edit">Change details</a></div>

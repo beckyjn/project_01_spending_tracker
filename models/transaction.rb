@@ -106,8 +106,9 @@ class Transaction
     return result.first['sum'].to_i
   end
 
-  # def date_display
-  #   return "#{@date.mday}/#{@date.mon}/#{@date.year}"
-  #
-  # end
+  def date_display
+    date = @date.to_s
+    return "#{date[8..9]}/#{date[5..6]}/#{date[0..3]}"
+  end
+
 end

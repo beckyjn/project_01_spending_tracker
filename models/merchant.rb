@@ -42,7 +42,10 @@ class Merchant
   end
 
   def self.all()
-    sql = "SELECT * FROM merchants"
+    sql = "SELECT merchants.* FROM merchants
+    INNER JOIN transactions
+    ON transactions.merchant_id = merchants.id
+    ORDER BY transactions.date DESC"
     merchant_data = SqlRunner.run(sql)
     return Merchant.map_items(merchant_data)
   end
@@ -74,6 +77,15 @@ class Merchant
     values = [@id]
     transaction_data = SqlRunner.run(sql, values)
     transaction = Transaction.map_items(transaction_data)
+  end
+
+  def avg_spend()
+    sql = "SELECT ROUND(AVG(transactions.spend), 2) FROM  merchants
+    INNER JOIN transactions
+    ON transactions.merchant_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.first['round'].to_i
   end
 
 end

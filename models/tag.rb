@@ -42,7 +42,10 @@ class Tag
   end
 
   def self.all()
-    sql = "SELECT * FROM tags"
+    sql = "SELECT tags.* FROM tags
+    INNER JOIN transactions
+    ON transactions.tag_id = tags.id
+    ORDER BY transactions.date DESC"
     tag_data = SqlRunner.run(sql)
     return Tag.map_items(tag_data)
   end
