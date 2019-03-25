@@ -99,4 +99,9 @@ class Transaction
     return merchant_name.first['merchant_name']
   end
 
+  def self.total_spend
+    sql = "SELECT SUM(spend) FROM transactions"
+    result = SqlRunner.run(sql)
+    return result.first['sum'].to_i
+  end
 end

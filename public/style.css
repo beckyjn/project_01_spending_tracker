@@ -31,7 +31,7 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     background-color: #C7D3DD;
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
@@ -69,6 +69,8 @@ body {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   color: #171D1C;
 }
+
+
  h1 {
    font-family: 'Patua One', sans-serif;
    font-size: 3.5em;
@@ -88,7 +90,7 @@ body {
  }
 
 td {
-  width: 6em;
+  width: 5.5em;
   text-align: center;
 }
 
@@ -121,9 +123,18 @@ input[type=text], [type=number]{
 
 input[type=submit] {
 font-family: 'Source Sans Pro', Helvetica, sans-serif;
-padding: 0.5em 0.25em 0.5em 0.25em;
+padding: 0.15em 0.5em 0.15em 0.5em;
 border-radius: 5px;
 background-color: #E8EEF2;
 color: #16BAC5;
 font-size: 0.85em;
 }
+
+/* input[type=submit] .delete{
+font-family: 'Source Sans Pro', Helvetica, sans-serif;
+padding: 0.15em 0.5em 0.15em 0.5em;
+border-radius: 5px;
+background-color: #171D1C;
+color: #16BAC5;
+font-size: 0.85em;
+} */

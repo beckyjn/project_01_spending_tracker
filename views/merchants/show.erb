@@ -19,8 +19,4 @@
   <% end %>
 </table>
 
-
-<form method="post" action="/spending-tracker/merchants/<%=@merchant.id%>/delete">
-<input type="submit" value="Delete"/>
-</form><p>
-  Warning! Deleting merchant data will delete all transactions associated with this merchant. This action cannot be undone!!</p>
+<a href="/spending-tracker/merchants/<%=@merchant.id%>/edit">Change details</a>

@@ -1,5 +1,7 @@
 <h2>Here are all the tags you've added</h2>
 
+<a href="/spending-tracker/tags/new">Add new tag</a>
+
 <table>
   <tr>
     <th>Tag</th>
@@ -9,7 +11,7 @@
   <tr><td><%= tag.name %> </td>
   <td><%= tag.total_spend %></td>
   <td><a href="/spending-tracker/tags/<%=tag.id%>">view more</a></td>
-    <td><a href="/spending-tracker/tags/<%=tag.id%>/edit">edit</a></td>
+
   </tr>
   <% end %>
 </table>

@@ -2,7 +2,7 @@
 
 <p>
   You have spent £<%= @tag.total_spend %> on <%= @tag.name %>.
-  On average, you spend y amount here.
+  On average, you spend y amount on <%= @tag.name %>.
   The most common place you buy this is z.
 </p>
 
@@ -19,8 +19,5 @@
   <% end %>
 </table>
 
-
-<form method="post" action="/spending-tracker/tags/<%=@tag.id%>/delete">
-<input type="submit" value="Delete"/>
-</form><p>
-  Warning! Deleting tag data will delete all transactions associated with this tag. This action cannot be undone!!</p>
+<p>
+<a href="/spending-tracker/tags/<%=@tag.id%>/edit">Change details</a>

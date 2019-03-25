@@ -1,5 +1,6 @@
 <h2>Here are all your transactions!</h2>
 
+<p>You have spent a total of £<%= @total_spend %></p>
 <table>
   <tr>
     <th>Shop</th>
@@ -9,14 +10,10 @@
 <% for transaction in @transactions %>
 <tr><td><%= transaction.show_merchant_name %> </td>
   <td><%= transaction.show_tag_name %></td>
-  <td><%= transaction.spend %></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">View more</a></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Edit</a></td>
-  <td>
-    <form method="post" action="/spending-tracker/transactions/<%=transaction.id%>/delete">
-    <input type="submit" value="Delete"/>
-    </form>
-  </td>
+  <td>£<%= transaction.spend %></td>
+  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">more info</a></td>
+
 </tr>
 <% end %>
+<tr><td> </td><td>Total: </td><td>£<%= @total_spend %></td></tr>
 </table>
