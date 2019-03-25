@@ -20,18 +20,18 @@ tag2.save
 
 transaction1 = Transaction.new({
   "tag_id" => tag1.id, "merchant_id" => merchant1.id,
-  "account_id" => account1.id, "spend" => 30})
+  "account_id" => account1.id, "spend" => 30, "date" => Date.new(2019,03,15)})
 transaction1.save
 
 transaction2 = Transaction.new({
   "tag_id" => tag2.id, "merchant_id" => merchant2.id,
-  "account_id" => account1.id, "spend" => 10})
+  "account_id" => account1.id, "spend" => 10, "date" => Date.new(2019,03,20)})
 transaction2.save
 
 
 transaction3 = Transaction.new({
   "tag_id" => tag1.id, "merchant_id" => merchant1.id,
-  "account_id" => account1.id, "spend" => 2})
+  "account_id" => account1.id, "spend" => 2, "date" => Date.new(2019,03,20)})
 transaction3.save
 
 

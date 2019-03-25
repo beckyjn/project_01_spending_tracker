@@ -24,5 +24,6 @@ CREATE TABLE transactions (
   tag_id INT8 REFERENCES tags(id) ON DELETE CASCADE,
   merchant_id INT8 REFERENCES merchants(id) ON DELETE CASCADE,
   account_id INT8 REFERENCES accounts(id) ON DELETE CASCADE,
-  spend INT4
+  spend INT4,
+  date DATE
 );

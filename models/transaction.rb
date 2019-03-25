@@ -3,7 +3,7 @@ require_relative('../db/sql_runner.rb')
 class Transaction
 
   attr_reader :id
-  attr_accessor :name, :tag_id, :merchant_id, :account_id, :spend
+  attr_accessor :name, :tag_id, :merchant_id, :account_id, :spend, :date
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -11,12 +11,12 @@ class Transaction
     @merchant_id = options['merchant_id'].to_i
     @account_id = options['account_id'].to_i
     @spend = options['spend'].to_i
-  
+    @date = options['date']
   end
 
   def save()
-    sql = "INSERT INTO transactions (tag_id, merchant_id, account_id, spend) VALUES ($1, $2, $3, $4) RETURNING id"
-    values = [@tag_id, @merchant_id, @account_id, @spend]
+    sql = "INSERT INTO transactions (tag_id, merchant_id, account_id, spend, date) VALUES ($1, $2, $3, $4, $5) RETURNING id"
+    values = [@tag_id, @merchant_id, @account_id, @spend, @date]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id.to_i
