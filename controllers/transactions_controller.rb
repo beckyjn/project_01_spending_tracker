@@ -10,6 +10,7 @@ also_reload('../models/*')
 get '/spending-tracker/transactions' do #index
   @transactions = Transaction.all
   @total_spend = Transaction.total_spend
+  @accounts = Account.all.first
   erb(:"transactions/index")
 end
 

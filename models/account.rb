@@ -46,14 +46,13 @@ class Account
     return Account.map_items(account_data)
   end
 
-  def total_spend
-    sql = "SELECT SUM (transactions.spend) AS total_spend FROM transactions
-    INNER JOIN accounts
-    ON transactions.account_id = accounts.id
+  def remaining
+    sql = "SELECT SUM(transactions.spend) AS total_spend FROM transactions
     WHERE transactions.account_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
-    return result.first['total_spend'].to_i
+    spent = result.first['total_spend'].to_i
+    return remaining = @budget - spent
   end
 
   def self.map_items(account_data)

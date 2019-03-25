@@ -67,8 +67,6 @@ class Merchant
 
   def total_spend()
     sql = "SELECT SUM(transactions.spend) FROM transactions
-    INNER JOIN merchants
-    ON transactions.merchant_id = merchants.id
     WHERE transactions.merchant_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
@@ -76,10 +74,12 @@ class Merchant
   end
 
   def all_transactions()
-    sql = "SELECT transactions.* from transactions
-    INNER JOIN merchants
-    ON transactions.merchant_id = merchants.id
-    WHERE transactions.merchant_id = $1"
+    sql = "SELECT * from transactions
+    WHERE merchant_id = $1"
+    # sql = "SELECT transactions.* from transactions
+    # INNER JOIN merchants
+    # ON transactions.merchant_id = merchants.id
+    # WHERE transactions.merchant_id = $1"
     values = [@id]
     transaction_data = SqlRunner.run(sql, values)
     transaction = Transaction.map_items(transaction_data)

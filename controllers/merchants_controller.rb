@@ -1,5 +1,4 @@
 require('sinatra')
-require('pry')
 require('sinatra/contrib/all')
 #
 # require_relative('../models/account.rb')

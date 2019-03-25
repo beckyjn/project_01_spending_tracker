@@ -1,6 +1,8 @@
 <h2>Here are all your transactions!</h2>
 
 <p>You have spent a total of £<%= @total_spend %></p>
+<p>You have £<%= @accounts.remaining %> remaining</p>
+<a href="/spending-tracker/budget/1">View your budget info</a>
 <table>
   <tr>
     <th>Shop</th>
