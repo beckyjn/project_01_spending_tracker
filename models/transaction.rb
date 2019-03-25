@@ -45,7 +45,7 @@ class Transaction
   end
 
   def self.all()
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY date DESC;"
     transaction_data = SqlRunner.run(sql)
     return Transaction.map_items(transaction_data)
   end
@@ -105,4 +105,9 @@ class Transaction
     result = SqlRunner.run(sql)
     return result.first['sum'].to_i
   end
+
+  # def date_display
+  #   return "#{@date.mday}/#{@date.mon}/#{@date.year}"
+  #
+  # end
 end

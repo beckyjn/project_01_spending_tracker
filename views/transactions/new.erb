@@ -1,7 +1,10 @@
 <h2>Add new transaction</h2>
 
 <form method="post" action="/spending-tracker/transactions">
-  <label for="merchant">Where did you spend money?</label>
+  <label for="date">When did you make this purchase?
+    <input type='date' id="date" name="date"/>
+    <p>
+  <label for="merchant">Where did you make this purchase?</label>
   <select id="merchant" name="merchant_id">
     <% for merchant in @merchants %>
       <option value="<%= merchant.id%>">
