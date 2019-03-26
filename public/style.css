@@ -111,9 +111,9 @@ select {
   font-size: 0.85em;
 }
 
-input[type=text], [type=number]{
+input[type=text], [type=number] {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
-  padding: 2px 5px 2px 15px;
+  padding: 5px 7px 5px 15px;
   border: 1px #171D1C;
   border-radius: 5px;
   background-color: #E8EEF2;
@@ -129,12 +129,3 @@ background-color: #E8EEF2;
 color: #16BAC5;
 font-size: 0.85em;
 }
-
-/* input[type=submit] .delete{
-font-family: 'Source Sans Pro', Helvetica, sans-serif;
-padding: 0.15em 0.5em 0.15em 0.5em;
-border-radius: 5px;
-background-color: #171D1C;
-color: #16BAC5;
-font-size: 0.85em;
-} */

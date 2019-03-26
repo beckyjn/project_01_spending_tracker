@@ -32,7 +32,7 @@
     </select>
 <p>
     <label for="spend">How much did you spend?</label>
-    <input type="number" id="spend" name="spend" value="<%=@transaction.spend%>" required>
+    <input type="number" id="spend" step="0.01" name="spend" value="<%=@transaction.spend%>" required>
 <p>
 
     <input type="hidden" id="account" name="account_id" value="<%=@accounts.first.id%>"/>

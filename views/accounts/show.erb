@@ -2,6 +2,7 @@
 
 <p>Your budget is set at <%= "£%.2f" % @account.budget %></p>
 <p>You have <%= "£%.2f" % @account.remaining %> remaining. </p>
+<p><%= @account.budget_warnings %></p>
 
 
 

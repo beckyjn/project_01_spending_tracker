@@ -72,4 +72,15 @@ class Account
   SqlRunner.run(sql)
   end
 
+  def budget_warnings
+    case
+    when self.remaining <= 0
+      return "You've spent all your budget!"
+    when self.remaining <= (@budget * 0.10)
+      return "Watch out! You have nearly spent all your budget."
+    when self.remaining <= (@budget * 0.25)
+      return "Uh oh! Your funds are getting low."
+    end
+  end
+
 end

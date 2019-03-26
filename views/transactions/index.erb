@@ -1,8 +1,9 @@
 <h2>Here are all your transactions!</h2>
 
 <p>You have spent a total of <%= "£%.2f" % @accounts.total_spend %></p>
-<p>You have <%= "£%.2f" % @accounts.remaining %> remaining</p>
-<a href="/spending-tracker/budget/1">View your budget info</a>
+<p>You have <%= "£%.2f" % @accounts.remaining %> remaining.</p>
+<p><%= @accounts.budget_warnings %></p>
+<a href="/spending-tracker/budget/1/edit">Change your budget?</a>
 
 <p>
   <form method="get" action="/spending-tracker/transactions/find">
@@ -32,23 +33,27 @@
     </form>
 
     </p>
-<table>
-  <tr>
-    <th>Shop</th>
-    <th>Tag</th>
-    <th>Spent</th>
-    <th>Date</th>
-  </tr>
-  <% @view_spend = 0.0 %>
-<% for transaction in @transactions %>
-<tr><td><%= transaction.show_merchant_name %> </td>
-  <td><%= transaction.show_tag_name %></td>
-  <td><%= "£%.2f" %transaction.spend %></td>
-  <% @view_spend += transaction.spend.to_f %>
-  <td><%= transaction.date_display %></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Amend</a></td>
 
-</tr>
-<% end %>
-<tr><td> </td><td>Total: </td><td><%= "£%.2f" % @view_spend  %></td></tr>
-</table>
+  <% unless @transactions.empty? %>
+    <table>
+      <tr>
+        <th>Shop</th>
+        <th>Tag</th>
+        <th>Spent</th>
+        <th>Date</th>
+      </tr>
+      <% @view_spend = 0.0 %>
+    <% for transaction in @transactions %>
+      <tr><td><%= transaction.show_merchant_name %> </td>
+        <td><%= transaction.show_tag_name %></td>
+        <td><%= "£%.2f" %transaction.spend %></td>
+        <% @view_spend += transaction.spend.to_f %>
+        <td><%= transaction.date_display %></td>
+        <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Amend</a></td>
+      </tr>
+    <% end %>
+    <tr><td> </td><td>Total: </td><td><%= "£%.2f" % @view_spend  %></td></tr>
+    </table>
+    <% else %>
+     No transactions to display
+  <% end %>
