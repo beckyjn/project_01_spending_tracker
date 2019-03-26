@@ -5,31 +5,30 @@
 <a href="/spending-tracker/budget/1">View your budget info</a>
 
 <p>
-  <form class="filter" method="get" action="/spending-tracker/transactions/find">
-  <label for="tag">Filter by tag?</label>
+  <form method="get" action="/spending-tracker/transactions/find">
+  <label for="tag">Filter by tag</label>
   <select id="tag" name="tag_id">
+    <option value="all">(all tags)</option>
     <% for tag in @tags %>
-      <option value="<%= tag.id%>">
-        <%= tag.name.downcase%>
-      </option>
+      <% selected_tag_text = (@selected_tag_id == tag.id) ? "selected" : ""%>
+        <option value="<%= tag.id%>" <%= selected_tag_text %>>
+          <%= tag.name.downcase%>
+        </option>
     <% end %>
   </select>
-  <input type="submit" value="Apply filter"/>
-  </form>
 
-  </p>
-
-  <p>
-    <form class="filter" method="get" action="/spending-tracker/transactions/find">
-    <label for="merchant">Filter by merchant?</label>
-    <select id="merchant" name="merchant_id">
-      <% for merchant in @merchants %>
-        <option value="<%= merchant.id%>">
+  <label for="merchant">Filter by merchant</label>
+  <select id="merchant" name="merchant_id">
+    <option value="all">(all merchants)</option>
+    <% for merchant in @merchants %>
+      <% selected_merchant_text = (@selected_merchant_id == merchant.id) ? "selected" : ""%>
+        <option value="<%= merchant.id%>" <%= selected_merchant_text %>>
           <%= merchant.name.downcase%>
         </option>
-      <% end %>
-    </select>
-    <input type="submit" value="Apply filter"/>
+    <% end %>
+  </select>
+
+    <input type="submit" value="Apply filters"/>
     </form>
 
     </p>

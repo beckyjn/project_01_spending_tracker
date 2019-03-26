@@ -50,6 +50,19 @@ class Transaction
     return Transaction.map_items(transaction_data)
   end
 
+  def self.decide_which_filter(tag_id, merchant_id)
+    case
+    when tag_id == "all" && merchant_id == "all"
+      return self.all()
+    when tag_id != "all" && merchant_id != "all"
+      return self.filter_by_tag_and_merchant(tag_id, merchant_id)
+    when tag_id == "all" && merchant_id != "all"
+      return self.filter_by_merchant(merchant_id)
+    when tag_id != "all" && merchant_id == "all"
+      return self.filter_by_tag(tag_id)
+  end
+end
+
   def self.filter_by_tag(tag_id)
     sql = "SELECT * FROM transactions
     WHERE tag_id = $1"
@@ -66,6 +79,14 @@ class Transaction
     return Transaction.map_items(transaction_data)
   end
 
+  def self.filter_by_tag_and_merchant(tag_id, merchant_id)
+    sql = "SELECT * FROM transactions
+    WHERE tag_id = $1
+   AND merchant_id = $2"
+    values = [tag_id, merchant_id]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
 
   def self.map_items(transaction_data)
     return transaction_data.map { |transaction| Transaction.new(transaction) }

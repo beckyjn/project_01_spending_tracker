@@ -32,8 +32,9 @@ end
 get '/spending-tracker/transactions/find' do #index
   @tags = Tag.all
   @merchants = Merchant.all
-  @transactions = Transaction.filter_by_tag(params[:tag_id]) && Transaction.filter_by_merchant(params[:merchant_id])
-
+  @transactions =  Transaction.decide_which_filter(params[:tag_id], params[:merchant_id] )
+  @selected_tag_id = params[:tag_id]
+  @selected_merchant_id = params[:merchant_id]
   @accounts = Account.all.first
   erb(:"transactions/index")
 end
