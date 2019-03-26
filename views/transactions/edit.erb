@@ -5,7 +5,7 @@
   <label for="merchant">Where did you spend money?</label>
   <select id="merchant" name="merchant_id" required>
     <% for merchant in @merchants %>
-      <% if @transaction.merchant_id = merchant.id%>
+      <% if @transaction.merchant_id == merchant.id%>
         <option value="<%= merchant.id%>" selected>
           <%= merchant.name.capitalize%>
         </option>
@@ -20,7 +20,7 @@
   <label for="tag">What did you buy?</label>
     <select id="tag" name="tag_id" required>
       <% for tag in @tags %>
-        <% if @transaction.tag_id = tag.id%>
+        <% if @transaction.tag_id == tag.id%>
           <option value="<%= tag.id%>" selected>
             <%= tag.name.downcase%>
           </option>

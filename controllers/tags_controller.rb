@@ -19,7 +19,7 @@ end
 post '/spending-tracker/tags' do #create
   @tag = Tag.new(params)
   @tag.save
-  redirect to('/spending-tracker/tags')
+  erb(:"tags/create")
 end
 
 get '/spending-tracker/tags/:id' do #show

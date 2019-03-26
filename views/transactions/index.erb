@@ -10,7 +10,7 @@
   <select id="tag" name="tag_id">
     <option value="all">(all tags)</option>
     <% for tag in @tags %>
-      <% selected_tag_text = (@selected_tag_id == tag.id) ? "selected" : ""%>
+      <% selected_tag_text = (@selected_tag_id == tag.id) ? "Selected" : ""%>
         <option value="<%= tag.id%>" <%= selected_tag_text %>>
           <%= tag.name.downcase%>
         </option>

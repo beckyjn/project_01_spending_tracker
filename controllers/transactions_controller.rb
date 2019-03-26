@@ -32,17 +32,13 @@ end
 get '/spending-tracker/transactions/find' do #index
   @tags = Tag.all
   @merchants = Merchant.all
+  @selected_tag_id = params[:tag_id].to_i
+  @selected_merchant_id = params[:merchant_id].to_i
   @transactions =  Transaction.decide_which_filter(params[:tag_id], params[:merchant_id] )
-  @selected_tag_id = params[:tag_id]
-  @selected_merchant_id = params[:merchant_id]
+
   @accounts = Account.all.first
   erb(:"transactions/index")
 end
-
-# get '/spending-tracker/transactions/:id' do #show
-#   @transaction = Transaction.find(params[:id])
-#   erb(:"transactions/show")
-# end
 
 get '/spending-tracker/transactions/:id/edit' do #edit
   @transaction = Transaction.find(params[:id])
