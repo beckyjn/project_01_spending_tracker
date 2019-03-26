@@ -6,7 +6,10 @@
   <input type ="submit" value="save changes">
   </form>
 <p>
+
+<div class="delete">
+  <p>Warning! Deleting tag data will delete all transactions associated with this tag. This action cannot be undone!!</p>
   <form method="post" action="/spending-tracker/tags/<%=@tag.id%>/delete">
   <input type="submit" value="Delete"/>
-  </form><p>
-    Warning! Deleting tag data will delete all transactions associated with this tag. This action cannot be undone!!</p>
+  </form>
+</div>

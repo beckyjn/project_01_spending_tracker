@@ -39,11 +39,14 @@ body {
 
 .nav_bar ul {
   list-style: none;
+  display: flex;
+justify-content: flex-start;
 }
 
 .nav_bar li {
   display: inline;
-  padding: 0.25em;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .nav_bar a {
@@ -58,10 +61,17 @@ body {
 }
 
 .nav_bar a:hover {
-  background-color: #D6C9C9;
+  font-family: 'Patua One', sans-serif;
+  font-size: 1em;
   color: #E8EEF2;
-
+  text-decoration: none;
+  text-transform: lowercase;
+  padding: 0.5em 0.25em 0.5em 0.25em;
+  border-radius: 5px;
+  background-color: #91D6DA;
+  color: #E8EEF2;
 }
+
 .content {
   padding-top: 50px;
   padding-left: 1em;
@@ -94,14 +104,6 @@ td {
   text-align: center;
 }
 
-a {
-  color: #16BAC5;
-}
-
-a:hover {
-  color: #C7D3DD;
-}
-
 select {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   padding: 0.5em 0.25em 0.5em 0.25em;
@@ -128,4 +130,62 @@ border-radius: 5px;
 background-color: #E8EEF2;
 color: #16BAC5;
 font-size: 0.85em;
+}
+
+input[type=submit]:hover {
+font-family: 'Source Sans Pro', Helvetica, sans-serif;
+padding: 0.15em 0.5em 0.15em 0.5em;
+border-radius: 5px;
+background-color: #E8EEF2;
+color: #C7D3DD;
+font-size: 0.85em;
+}
+
+.delete {
+    border: #EF7B7B;
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 2em;
+    padding: 5px;
+    width: 50vw;
+    text-align: center;
+}
+
+.delete input[type=submit] {
+font-family: 'Source Sans Pro', Helvetica, sans-serif;
+padding: 0.15em 0.5em 0.15em 0.5em;
+border-radius: 5px;
+background-color: #E8EEF2;
+color: #EF7B7B;
+font-size: 1em;
+}
+
+
+.delete input[type=submit]:hover {
+font-family: 'Source Sans Pro', Helvetica, sans-serif;
+padding: 0.15em 0.5em 0.15em 0.5em;
+border-radius: 5px;
+background-color: #E8EEF2;
+color: #C7D3DD;
+font-size: 1em;
+}
+
+a {
+font-family: 'Source Sans Pro', Helvetica, sans-serif;
+padding: 0.15em 0.5em 0.15em 0.5em;
+border-radius: 5px;
+background-color: #E8EEF2;
+color: #16BAC5;
+font-size: 0.85em;
+text-decoration: none;
+}
+
+a:hover {
+font-family: 'Source Sans Pro', Helvetica, sans-serif;
+padding: 0.15em 0.5em 0.15em 0.5em;
+border-radius: 5px;
+background-color: #E8EEF2;
+color: #C7D3DD;
+font-size: 0.85em;
+text-decoration: none;
 }

@@ -3,12 +3,14 @@
 <form method="post" action="/spending-tracker/merchants/<%= @merchant.id %>">
   <label for="name">Name of merchant</label>
   <input type="text" id="name" name="name" value="<%=@merchant.name%>" required/>
-  <input type ="submit" value="save changes">
+<input type ="submit" value="save changes">
   </form>
 
-<p>
+
+<div class="delete">
+  <p>
+    Warning! Deleting merchant data will delete all transactions associated with this merchant. This action cannot be undone!!</p>
   <form method="post" action="/spending-tracker/merchants/<%=@merchant.id%>/delete">
   <input type="submit" value="Delete"/>
   </form>
-  <p>
-    Warning! Deleting merchant data will delete all transactions associated with this merchant. This action cannot be undone!!</p>
+  </div>

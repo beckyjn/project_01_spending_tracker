@@ -40,6 +40,9 @@
   <input type="submit" value="Save changes"/>
 </form>
 
-<form method="post" action="/spending-tracker/transactions/<%=@transaction.id%>/delete" class="delete">
+<div class="delete">
+  <p>Would you like to delete this transaction? This action cannot be undone!</p>
+<form method="post" action="/spending-tracker/transactions/<%=@transaction.id%>/delete">
   <input type="submit" value="Delete"/>
   </form>
+  </div>
