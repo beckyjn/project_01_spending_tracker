@@ -1,7 +1,7 @@
 <h2>Here are all your transactions!</h2>
 
-<p>You have spent a total of £<%= @accounts.total_spend %></p>
-<p>You have £<%= @accounts.remaining %> remaining</p>
+<p>You have spent a total of <%= "£%.2f" % @accounts.total_spend %></p>
+<p>You have <%= "£%.2f" % @accounts.remaining %> remaining</p>
 <a href="/spending-tracker/budget/1">View your budget info</a>
 
 <p>
@@ -39,16 +39,16 @@
     <th>Spent</th>
     <th>Date</th>
   </tr>
-  <% @view_spend = 0%>
+  <% @view_spend = 0.0 %>
 <% for transaction in @transactions %>
 <tr><td><%= transaction.show_merchant_name %> </td>
   <td><%= transaction.show_tag_name %></td>
-  <td>£<%= transaction.spend %></td>
-  <% @view_spend += transaction.spend.to_i %>
+  <td><%= "£%.2f" %transaction.spend %></td>
+  <% @view_spend += transaction.spend.to_f %>
   <td><%= transaction.date_display %></td>
   <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Amend</a></td>
 
 </tr>
 <% end %>
-<tr><td> </td><td>Total: </td><td>£<%= @view_spend  %></td></tr>
+<tr><td> </td><td>Total: </td><td><%= "£%.2f" % @view_spend  %></td></tr>
 </table>

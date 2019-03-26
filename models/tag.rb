@@ -72,7 +72,7 @@ class Tag
     WHERE transactions.tag_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
-    return result.first['sum'].to_i
+    return result.first['sum'].to_f
   end
 
   def all_transactions()

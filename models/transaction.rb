@@ -10,7 +10,7 @@ class Transaction
     @tag_id = options['tag_id'].to_i
     @merchant_id = options['merchant_id'].to_i
     @account_id = options['account_id'].to_i
-    @spend = options['spend'].to_i
+    @spend = options['spend'].to_f
     @date = options['date']
   end
 
@@ -122,6 +122,10 @@ end
   def date_display
     date = Date.parse(@date)
     return "#{date.mday} #{Date::ABBR_MONTHNAMES[date.mon]} #{date.year}"
+  end
+
+  def price_display
+    return "£%.2f" % @spend
   end
 
 end

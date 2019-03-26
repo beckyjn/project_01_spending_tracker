@@ -1,7 +1,7 @@
 <h2>Your budget</h2>
 
-<p>Your budget is set at £<%= @account.budget %></p>
-<p>You have £<%= @account.remaining %> remaining. </p>
+<p>Your budget is set at <%= "£%.2f" % @account.budget %></p>
+<p>You have <%= "£%.2f" % @account.remaining %> remaining. </p>
 
 
 

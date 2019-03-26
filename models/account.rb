@@ -7,7 +7,7 @@ class Account
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @budget = options['budget'].to_i
+    @budget = options['budget'].to_f
   end
 
   def save()
@@ -51,7 +51,7 @@ class Account
     WHERE transactions.account_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
-    spent = result.first['total_spend'].to_i
+    spent = result.first['total_spend'].to_f
     return remaining = @budget - spent
   end
 
@@ -60,7 +60,7 @@ class Account
     WHERE transactions.account_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
-    return spent = result.first['total_spend'].to_i
+    return spent = result.first['total_spend'].to_f
   end
 
   def self.map_items(account_data)

@@ -9,7 +9,7 @@
   </tr>
   <% for tag in @tags %>
   <tr><td><%= tag.name %> </td>
-  <td>£<%= tag.total_spend %></td>
+  <td><%= "£%.2f" % tag.total_spend %></td>
   <td><a href="/spending-tracker/tags/<%=tag.id%>">view more</a></td>
 
   </tr>

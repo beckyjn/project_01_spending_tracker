@@ -10,7 +10,7 @@
   </tr>
   <% for merchant in @merchants %>
   <tr><td><%= merchant.name %> </td>
-  <td>£<%= merchant.total_spend %></td>
+  <td><%= "£%.2f" % merchant.total_spend.to_f %></td>
   <td><a href="/spending-tracker/merchants/<%=merchant.id%>">view more</a></td>
   </tr>
   <% end %>

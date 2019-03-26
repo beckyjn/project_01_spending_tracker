@@ -1,7 +1,7 @@
 <h2>Edit budget</h2>
 
 <form method="post" action="/spending-tracker/budget/<%= @account.id %>">
-  <label for="budget">Your new budget value</label>
+  <label for="budget">What is your new budget?</label>
   <input type="number" id="budget" name="budget" value="<%=@account.budget%>" required>
   <input type ="submit" value="save changes">
   </form>

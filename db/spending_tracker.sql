@@ -6,7 +6,7 @@ DROP TABLE accounts;
 
 CREATE TABLE accounts (
   id SERIAL8 PRIMARY KEY,
-  budget INT4
+  budget DECIMAL(7,2)
 );
 
 CREATE TABLE tags (
@@ -24,6 +24,6 @@ CREATE TABLE transactions (
   tag_id INT8 REFERENCES tags(id) ON DELETE CASCADE,
   merchant_id INT8 REFERENCES merchants(id) ON DELETE CASCADE,
   account_id INT8 REFERENCES accounts(id) ON DELETE CASCADE,
-  spend INT4,
+  spend DECIMAL(7,2),
   date DATE
 );
