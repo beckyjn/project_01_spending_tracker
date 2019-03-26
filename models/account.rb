@@ -55,6 +55,14 @@ class Account
     return remaining = @budget - spent
   end
 
+  def total_spend
+    sql = "SELECT SUM(transactions.spend) AS total_spend FROM transactions
+    WHERE transactions.account_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return spent = result.first['total_spend'].to_i
+  end
+
   def self.map_items(account_data)
     return account_data.map { |account| Account.new(account) }
   end

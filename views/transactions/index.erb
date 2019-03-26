@@ -1,8 +1,38 @@
 <h2>Here are all your transactions!</h2>
 
-<p>You have spent a total of £<%= @total_spend %></p>
+<p>You have spent a total of £<%= @accounts.total_spend %></p>
 <p>You have £<%= @accounts.remaining %> remaining</p>
 <a href="/spending-tracker/budget/1">View your budget info</a>
+
+<p>
+  <form class="filter" method="get" action="/spending-tracker/transactions/find">
+  <label for="tag">Filter by tag?</label>
+  <select id="tag" name="tag_id">
+    <% for tag in @tags %>
+      <option value="<%= tag.id%>">
+        <%= tag.name.downcase%>
+      </option>
+    <% end %>
+  </select>
+  <input type="submit" value="Apply filter"/>
+  </form>
+
+  </p>
+
+  <p>
+    <form class="filter" method="get" action="/spending-tracker/transactions/find">
+    <label for="merchant">Filter by merchant?</label>
+    <select id="merchant" name="merchant_id">
+      <% for merchant in @merchants %>
+        <option value="<%= merchant.id%>">
+          <%= merchant.name.downcase%>
+        </option>
+      <% end %>
+    </select>
+    <input type="submit" value="Apply filter"/>
+    </form>
+
+    </p>
 <table>
   <tr>
     <th>Shop</th>
@@ -15,7 +45,7 @@
   <td><%= transaction.show_tag_name %></td>
   <td>£<%= transaction.spend %></td>
   <td><%= transaction.date_display %></td>
-  <td><a href="/spending-tracker/transactions/<%=transaction.id%>">more info</a></td>
+  <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Amend</a></td>
 
 </tr>
 <% end %>
