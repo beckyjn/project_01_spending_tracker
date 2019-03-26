@@ -2,4 +2,15 @@
 
 <p>Use the bar above to find your way around</p>
 
-<a href="/spending-tracker/budget/1">View your budget info</a>
+<div>
+<h2>Your budget</h2>
+
+<p>Your budget is set at £<%= @account.budget %></p>
+<p>You have £<%= @account.remaining %> remaining. </p>
+
+
+
+<div class="fake_button">
+<a href="/spending-tracker/budget/<%=@account.id%>/edit">Change details</a>
+</div>
+</div>
