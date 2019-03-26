@@ -1,11 +1,11 @@
 <h2>Add new transaction</h2>
-<p>all fields are mandatory!</p>
+
 <form method="post" action="/spending-tracker/transactions">
   <label for="date">When did you make this purchase?
-    <input type='date' id="date" name="date"/>
+    <input type='date' id="date" name="date" required/>
     <p>
   <label for="merchant">Where did you make this purchase?</label>
-  <select id="merchant" name="merchant_id">
+  <select id="merchant" name="merchant_id" required>
     <% for merchant in @merchants %>
       <option value="<%= merchant.id%>">
         <%= merchant.name.capitalize%>
@@ -15,7 +15,7 @@
     <a href="/spending-tracker/merchants/new">Add new merchant?</a>
 <p>
     <label for="tag">What did you buy?</label>
-    <select id="tag" name="tag_id">
+    <select id="tag" name="tag_id" required>
       <% for tag in @tags %>
         <option value="<%= tag.id%>">
           <%= tag.name.downcase%>
@@ -25,7 +25,7 @@
     <a href="/spending-tracker/tags/new">Add new tag?</a>
 <p>
     <label for="spend">How much did you spend?</label>
-    <input type="number" id="spend" name="spend">
+    <input type="number" id="spend" name="spend" required/>
 <p>
 
     <input type="hidden" id="account" name="account_id" value="<%=@accounts.first.id%>"/>

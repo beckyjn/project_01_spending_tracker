@@ -82,8 +82,6 @@ class Transaction
 
   def show_tag_name
     sql = "SELECT tags.name AS tag_name FROM tags
-    INNER JOIN transactions
-    ON transactions.tag_id = tags.id
     WHERE tags.id = $1"
     values = [@tag_id]
     tag_name = SqlRunner.run(sql, values)
@@ -92,8 +90,6 @@ class Transaction
 
   def show_merchant_name
     sql = "SELECT merchants.name AS merchant_name FROM merchants
-    INNER JOIN transactions
-    ON transactions.merchant_id = merchants.id
     WHERE merchants.id = $1"
     values = [@merchant_id]
     merchant_name = SqlRunner.run(sql, values)
@@ -107,8 +103,8 @@ class Transaction
   end
 
   def date_display
-    date = @date.to_s
-    return "#{date[8..9]}/#{date[5..6]}/#{date[0..3]}"
+    date = Date.parse(@date)
+    return "#{date.mday} #{Date::ABBR_MONTHNAMES[date.mon]} #{date.year}"
   end
 
 end

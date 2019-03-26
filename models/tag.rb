@@ -51,7 +51,7 @@ class Tag
   end
 
   def self.all()
-    sql = "SELECT * FROM tags"
+    sql = "SELECT * FROM tags ORDER BY name ASC"
     tag_data = SqlRunner.run(sql)
     return Tag.map_items(tag_data)
   end

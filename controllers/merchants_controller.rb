@@ -19,8 +19,10 @@ end
 post '/spending-tracker/merchants' do #create
   @merchant = Merchant.new(params)
   @merchant.save
-  redirect to('/spending-tracker/merchants')
+  erb(:"merchants/create")
 end
+
+
 
 get '/spending-tracker/merchants/:id' do #show
   @merchant = Merchant.find(params[:id])
