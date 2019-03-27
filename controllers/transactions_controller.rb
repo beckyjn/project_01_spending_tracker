@@ -1,6 +1,5 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require('pry')
 #
 require_relative('../models/account.rb')
 require_relative('../models/merchant.rb')
@@ -29,16 +28,18 @@ post '/spending-tracker/transactions' do #create
   redirect to("/spending-tracker/transactions")
 end
 
-get '/spending-tracker/transactions/find' do #index
+get '/spending-tracker/transactions/find' do #filter
+
   @tags = Tag.all
   @merchants = Merchant.all
   @selected_tag_id = params[:tag_id].to_i
   @selected_merchant_id = params[:merchant_id].to_i
-  @transactions =  Transaction.decide_which_filter(params[:tag_id], params[:merchant_id] )
-
+  @transactions =  Transaction.decide_which_filter(params[:tag_id], params[:merchant_id], params[:start_date], params[:end_date] )
   @accounts = Account.all.first
   erb(:"transactions/index")
 end
+
+
 
 get '/spending-tracker/transactions/:id/edit' do #edit
   @transaction = Transaction.find(params[:id])

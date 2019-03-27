@@ -93,15 +93,22 @@ justify-content: flex-start;
    color: #171D1C;
  }
 
+table {
+  min-width: 15em;
+  width: 70vw;
+}
+
  th {
+   padding: 0.5em;
    font-family: 'Patua One', sans-serif;
    font-size: 1.15em;
    color: #171D1C;
  }
 
 td {
-  width: 5.5em;
+  padding:0.25em;
   text-align: center;
+  border-bottom: 2px solid #C7D3DD;
 }
 
 select {

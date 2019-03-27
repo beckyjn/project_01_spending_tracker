@@ -7,30 +7,35 @@
 
 <p>
   <form method="get" action="/spending-tracker/transactions/find">
-  <label for="tag">Filter by tag</label>
-  <select id="tag" name="tag_id">
-    <option value="all">(all tags)</option>
-    <% for tag in @tags %>
-      <% selected_tag_text = (@selected_tag_id == tag.id) ? "Selected" : ""%>
-        <option value="<%= tag.id%>" <%= selected_tag_text %>>
-          <%= tag.name.downcase%>
-        </option>
-    <% end %>
-  </select>
+    <label for="tag">Filter by tag</label>
+    <select id="tag" name="tag_id">
+      <option value="all">(all tags)</option>
+      <% for tag in @tags %>
+        <% selected_tag_text = (@selected_tag_id == tag.id) ? "Selected" : ""%>
+          <option value="<%= tag.id%>" <%= selected_tag_text %>>
+            <%= tag.name.downcase%>
+          </option>
+      <% end %>
+    </select>
+    <label for="merchant">Filter by merchant</label>
+    <select id="merchant" name="merchant_id">
+      <option value="all">(all merchants)</option>
+      <% for merchant in @merchants %>
+        <% selected_merchant_text = (@selected_merchant_id == merchant.id) ? "selected" : ""%>
+          <option value="<%= merchant.id%>" <%= selected_merchant_text %>>
+            <%= merchant.name.downcase%>
+          </option>
+      <% end %>
+    </select>
+  <p>
+    <label for="start-date">Start date </label>
+      <input type="date" name="start_date" id="start-date"/>
+    <label for="end-date">End date </label>
+      <input type="date" name="end_date" id="end-date"/>
+  <input type="submit" value="Apply filters"/>
+  </form>
 
-  <label for="merchant">Filter by merchant</label>
-  <select id="merchant" name="merchant_id">
-    <option value="all">(all merchants)</option>
-    <% for merchant in @merchants %>
-      <% selected_merchant_text = (@selected_merchant_id == merchant.id) ? "selected" : ""%>
-        <option value="<%= merchant.id%>" <%= selected_merchant_text %>>
-          <%= merchant.name.downcase%>
-        </option>
-    <% end %>
-  </select>
 
-    <input type="submit" value="Apply filters"/>
-    </form>
 
     </p>
 
@@ -41,6 +46,7 @@
         <th>Tag</th>
         <th>Spent</th>
         <th>Date</th>
+        <th></th>
       </tr>
       <% @view_spend = 0.0 %>
     <% for transaction in @transactions %>

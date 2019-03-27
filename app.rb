@@ -8,6 +8,8 @@ require_relative('./controllers/accounts_controller')
 
 require_relative('./models/account.rb')
 
+also_reload( './models/*' )
+
 get '/spending-tracker/' do
     accounts = Account.all
     @account = accounts.first

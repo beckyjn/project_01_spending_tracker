@@ -50,22 +50,37 @@ class Transaction
     return Transaction.map_items(transaction_data)
   end
 
-  def self.decide_which_filter(tag_id, merchant_id)
-    case
-    when tag_id == "all" && merchant_id == "all"
-      return self.all()
-    when tag_id != "all" && merchant_id != "all"
+  def self.decide_which_filter(tag_id, merchant_id, start_date, end_date)
+    # if no merchant or tag has been specified, but a date range has, filter all by date
+    if (tag_id == "all" && merchant_id == "all") && (start_date != "" && end_date != "")
+      return self.filter_by_date(start_date, end_date)
+    #if no merchant or tag has been specified, nor a date range, return all transactions
+    elsif (tag_id == "all" && merchant_id == "all") && (start_date == "" && end_date == "")
+      return self.all
+    #if both a tag and merchant have been specified, but a date range has not, filter transactions by tag and merchant
+    elsif (tag_id != "all" && merchant_id != "all") && (start_date == "" && end_date == "")
       return self.filter_by_tag_and_merchant(tag_id, merchant_id)
-    when tag_id == "all" && merchant_id != "all"
+    #if a tag, merchant, start date and end date have been specified, filter by all of them
+    elsif (tag_id != "all" && merchant_id != "all") && (start_date != "" && end_date != "")
+      return self.filter_by_everything(tag_id, merchant_id, start_date, end_date)
+    #if a merchant is specified and a tag isn't, and a date range has not
+    elsif (tag_id == "all" && merchant_id != "all") && (start_date == "" && end_date == "")
       return self.filter_by_merchant(merchant_id)
-    when tag_id != "all" && merchant_id == "all"
+    #if a tag has been specified and a merchant hasn't, and neither has a date
+    elsif (tag_id != "all" && merchant_id == "all") && (start_date == "" && end_date == "")
       return self.filter_by_tag(tag_id)
+    #if a tag is specified and a merchant isn't, and a date range has also been specified
+    elsif (tag_id != "all" && merchant_id == "all") && (start_date != "" && end_date != "")
+      return self.filter_by_tag_and_date(tag_id, start_date, end_date)
+    elsif (tag_id == "all" && merchant_id != "all") && (start_date != "" && end_date != "")
+      return self.filter_by_merchant_and_date(merchant_id, start_date, end_date)
+
+    end
   end
-end
 
   def self.filter_by_tag(tag_id)
     sql = "SELECT * FROM transactions
-    WHERE tag_id = $1"
+    WHERE tag_id = $1 ORDER BY date DESC"
     values = [tag_id]
     transaction_data = SqlRunner.run(sql, values)
     return Transaction.map_items(transaction_data)
@@ -73,8 +88,36 @@ end
 
   def self.filter_by_merchant(merchant_id)
     sql = "SELECT * FROM transactions
-    WHERE merchant_id = $1"
+    WHERE merchant_id = $1 ORDER BY date DESC"
     values = [merchant_id]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
+
+  def self.filter_by_date(start_date, end_date)
+    sql = "SELECT * FROM transactions
+    WHERE date BETWEEN $1 and $2 ORDER BY date DESC"
+    values = [start_date, end_date]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
+
+  def self.filter_by_tag_and_date(tag_id, start_date, end_date)
+    sql = "SELECT * FROM transactions
+      WHERE tag_id = $1 AND
+      date BETWEEN $2 and $3
+      ORDER BY date DESC"
+    values = [tag_id, start_date, end_date]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
+
+  def self.filter_by_merchant_and_date(merchant_id, start_date, end_date)
+    sql = "SELECT * FROM transactions
+      WHERE merchant_id = $1 AND
+      date BETWEEN $2 and $3
+      ORDER BY date DESC"
+    values = [merchant_id, start_date, end_date]
     transaction_data = SqlRunner.run(sql, values)
     return Transaction.map_items(transaction_data)
   end
@@ -82,8 +125,19 @@ end
   def self.filter_by_tag_and_merchant(tag_id, merchant_id)
     sql = "SELECT * FROM transactions
     WHERE tag_id = $1
-   AND merchant_id = $2"
+   AND merchant_id = $2
+   ORDER BY date DESC"
     values = [tag_id, merchant_id]
+    transaction_data = SqlRunner.run(sql, values)
+    return Transaction.map_items(transaction_data)
+  end
+
+  def self.filter_by_everything(tag_id, merchant_id, start_date, end_date)
+    sql = "SELECT * FROM transactions
+      WHERE tag_id = $1 and merchant_id = $2 AND
+      date BETWEEN $3 and $4
+      ORDER BY date DESC"
+    values = [tag_id, merchant_id, start_date, end_date]
     transaction_data = SqlRunner.run(sql, values)
     return Transaction.map_items(transaction_data)
   end
@@ -124,8 +178,6 @@ end
     return "#{date.mday} #{Date::ABBR_MONTHNAMES[date.mon]} #{date.year}"
   end
 
-  def price_display
-    return "£%.2f" % @spend
-  end
+
 
 end
