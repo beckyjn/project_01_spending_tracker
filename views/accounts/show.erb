@@ -1,11 +1,11 @@
-<h2>Your budget</h2>
+<h2>Your spending summary</h2>
 
-<p>Your budget is set at <%= "£%.2f" % @account.budget %></p>
-<p>You have <%= "£%.2f" % @account.remaining %> remaining. </p>
-<p><%= @account.budget_warnings %></p>
+<div class = "info">
+<p>You have spent a total of <%= "£%.2f" %  @account.total_spend_all_time %> since using our tracker.</p>
+
+</div>
+
+<div class="view">
 
 
-
-<div class="fake_button">
-<a href="/spending-tracker/budget/<%=@account.id%>/edit">Change details</a>
 </div>

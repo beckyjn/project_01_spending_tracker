@@ -93,9 +93,18 @@ justify-content: flex-start;
    color: #171D1C;
  }
 
+
+ h3 {
+   font-family: 'Patua One', sans-serif;
+   font-size: 1.25em;
+   color: #171D1C;
+   text-align: center
+ }
+
 table {
   min-width: 15em;
   width: 70vw;
+
 }
 
  th {
@@ -109,6 +118,12 @@ td {
   padding:0.25em;
   text-align: center;
   border-bottom: 2px solid #C7D3DD;
+}
+
+td .emphasis {
+  padding:0.25em;
+  text-align: center;
+  font-weight: bold;
 }
 
 select {
@@ -195,4 +210,11 @@ background-color: #E8EEF2;
 color: #C7D3DD;
 font-size: 0.85em;
 text-decoration: none;
+}
+
+div .view {
+  min-width: 15em;
+  width: 75vw;
+  text-align: center;
+  padding-top: 1.5em;
 }

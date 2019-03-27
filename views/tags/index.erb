@@ -1,6 +1,46 @@
 <h2>Here are all the tags you've added</h2>
 
-<div class="fake_button"><a href="/spending-tracker/tags/new">Add new tag</a></div>
+<div class="info">
+  This is how much you've spent on each category. Use the drop-down below to filter this by month.
+  </div>
+
+<div class="view">
+
+<form method="get" action="/spending-tracker/tags/find">
+    <label for="month">Select Month: </label>
+        <select id="month" name="month">
+          <option value="" >(all)</option>
+          <option value="1">January</option>
+          <option value="2">Febuary</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+    </select>
+    <label for="year">Select Year: </label>
+    <select id="year" name="year">
+      <option value="">(all)</option>
+      <option value="2019">2019</option>
+      <option value="2018">2018</option>
+      <option value="2017">2017</option>
+    </select>
+    <input type="submit" value="Apply filter"/>
+</form>
+
+
+<h3>
+  <% if @month == "" || @month == nil %>
+  All transactions
+  <% else %>
+  <%= Date::MONTHNAMES[@month.to_i]%>
+  <%= @year %>
+  <% end %></h3>
 
 <table>
   <tr>
@@ -10,9 +50,13 @@
   </tr>
   <% for tag in @tags %>
   <tr><td><%= tag.name %> </td>
-  <td><%= "£%.2f" % tag.total_spend %></td>
+  <td><%= "£%.2f" % tag.decide_filter(@month, @year) %></td>
   <td><a href="/spending-tracker/tags/<%=tag.id%>">view more</a></td>
 
   </tr>
   <% end %>
 </table>
+
+</div>
+
+<div class="fake_button"><a href="/spending-tracker/tags/new">Add new tag</a></div>

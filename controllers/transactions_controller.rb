@@ -9,7 +9,7 @@ also_reload('../models/*')
 
 get '/spending-tracker/transactions' do #index
   @transactions = Transaction.all
-  @accounts = Account.all.first
+  @account = Account.all.first
   @tags = Tag.all
   @merchants = Merchant.all
   erb(:"transactions/index")
@@ -29,13 +29,12 @@ post '/spending-tracker/transactions' do #create
 end
 
 get '/spending-tracker/transactions/find' do #filter
-
   @tags = Tag.all
   @merchants = Merchant.all
   @selected_tag_id = params[:tag_id].to_i
   @selected_merchant_id = params[:merchant_id].to_i
   @transactions =  Transaction.decide_which_filter(params[:tag_id], params[:merchant_id], params[:start_date], params[:end_date] )
-  @accounts = Account.all.first
+  @account = Account.all.first
   erb(:"transactions/index")
 end
 

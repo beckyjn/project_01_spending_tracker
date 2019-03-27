@@ -6,6 +6,6 @@
 <p>You have <%="£%.2f" % @account.remaining(Date::today.month.to_s, Date::today.year.to_s,) %> of your budget left for this month. </p>
 
 <div class="fake_button">
-<a href="/spending-tracker/budget/<%=@account.id%>/edit">Change details</a>
+<a href="/spending-tracker/account/<%=@account.id%>/edit">Change details</a>
 </div>
 </div>

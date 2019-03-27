@@ -57,7 +57,7 @@ class Account
   def total_spend_mon(month, year)
     sql = "SELECT SUM(spend) AS total_spend FROM transactions
     WHERE account_id = $1 AND
-EXTRACT(month FROM date) = $2 AND EXTRACT(year FROM date) = $3"
+    EXTRACT(month FROM date) = $2 AND EXTRACT(year FROM date) = $3"
     values = [@id, month, year]
     result = SqlRunner.run(sql, values)
     return spent = result.first['total_spend'].to_f

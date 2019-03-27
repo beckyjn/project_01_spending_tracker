@@ -1,5 +1,6 @@
 require('sinatra')
 require('sinatra/contrib/all')
+require('pry')
 #
 # require_relative('../models/account.rb')
 # require_relative('../models/merchant.rb')
@@ -8,7 +9,15 @@ require_relative('../models/tag.rb')
 also_reload('../models/*')
 
 get '/spending-tracker/tags' do #index
+  @month = nil
   @tags = Tag.all
+  erb(:"tags/index")
+end
+
+get '/spending-tracker/tags/find' do #index
+  @tags = Tag.all
+  @month = params['month'] ? params['month'] : ""
+  @year = params['year'] ? params['year'] : ""
   erb(:"tags/index")
 end
 
