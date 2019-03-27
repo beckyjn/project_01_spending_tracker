@@ -8,7 +8,15 @@ require_relative('../models/merchant.rb')
 also_reload('../models/*')
 
 get '/spending-tracker/merchants' do #index
+  @month = nil
   @merchants = Merchant.all
+  erb(:"merchants/index")
+end
+
+get '/spending-tracker/merchants/find' do #index
+  @merchants = Merchant.all
+  @month = params['month'] ? params['month'] : ""
+  @year = params['year'] ? params['year'] : ""
   erb(:"merchants/index")
 end
 

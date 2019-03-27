@@ -65,12 +65,29 @@ class Merchant
   SqlRunner.run(sql)
   end
 
+  def decide_filter(month, year)
+    if (month == "" && year == "") || (month == nil && year == nil)
+      return total_spend()
+    else
+      return total_spend_mon(month.to_i, year.to_i)
+    end
+  end
+
   def total_spend()
     sql = "SELECT SUM(transactions.spend) FROM transactions
     WHERE transactions.merchant_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
     return result.first['sum'].to_f
+  end
+
+  def total_spend_mon(month, year)
+    sql = "SELECT SUM(spend) AS total_spend FROM transactions
+    WHERE merchant_id = $1 AND
+    EXTRACT(month FROM date) = $2 AND EXTRACT(year FROM date) = $3"
+    values = [@id, month, year]
+    result = SqlRunner.run(sql, values)
+    return spent = result.first['total_spend'].to_f
   end
 
   def all_transactions()

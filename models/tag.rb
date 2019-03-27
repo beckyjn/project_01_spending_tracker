@@ -75,9 +75,7 @@ class Tag
 
   def total_spend()
     sql = "SELECT SUM(transactions.spend) FROM transactions
-    INNER JOIN tags
-    ON transactions.tag_id = tags.id
-    WHERE transactions.tag_id = $1"
+    WHERE tag_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
     return result.first['sum'].to_f
