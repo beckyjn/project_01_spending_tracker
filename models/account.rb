@@ -46,22 +46,28 @@ class Account
     return Account.map_items(account_data)
   end
 
-  def remaining
-    sql = "SELECT SUM(transactions.spend) AS total_spend FROM transactions
-    WHERE transactions.account_id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    spent = result.first['total_spend'].to_f
-    return remaining = @budget - spent
-  end
-
-  def total_spend
-    sql = "SELECT SUM(transactions.spend) AS total_spend FROM transactions
-    WHERE transactions.account_id = $1"
+  def total_spend_all_time
+    sql = "SELECT SUM(spend) AS total_spend FROM transactions
+    WHERE account_id = $1"
     values = [@id]
     result = SqlRunner.run(sql, values)
     return spent = result.first['total_spend'].to_f
   end
+
+  def total_spend_mon(month, year)
+    sql = "SELECT SUM(spend) AS total_spend FROM transactions
+    WHERE account_id = $1 AND
+EXTRACT(month FROM date) = $2 AND EXTRACT(year FROM date) = $3"
+    values = [@id, month, year]
+    result = SqlRunner.run(sql, values)
+    return spent = result.first['total_spend'].to_f
+  end
+
+  def remaining(month, year)
+    remaining_budget = @budget - self.total_spend_mon(month, year)
+    return remaining_budget
+  end
+
 
   def self.map_items(account_data)
     return account_data.map { |account| Account.new(account) }
