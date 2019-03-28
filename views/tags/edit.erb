@@ -1,11 +1,13 @@
 <h2>Edit tag - <%=@tag.name%></h2>
 
+<div class="form">
 <form method="post" action="/spending-tracker/tags/<%= @tag.id %>">
   <label for="name">Name of tag</label>
   <input type="text" id="name" name="name" value="<%=@tag.name%>" required />
   <input type ="submit" value="save changes">
   </form>
 <p>
+  </div>
 
 <div class="delete">
   <p>Warning! Deleting tag data will delete all transactions associated with this tag. This action cannot be undone!!</p>

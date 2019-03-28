@@ -92,7 +92,8 @@ class Merchant
 
   def all_transactions()
     sql = "SELECT * from transactions
-    WHERE merchant_id = $1"
+    WHERE merchant_id = $1
+    ORDER BY date DESC"
     # sql = "SELECT transactions.* from transactions
     # INNER JOIN merchants
     # ON transactions.merchant_id = merchants.id

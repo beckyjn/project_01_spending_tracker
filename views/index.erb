@@ -1,9 +1,10 @@
 <h1> Welcome to the spending tracker!</h1>
 <div>
 <h2>Your budget</h2>
-
+<div class="info">
 <p>Your monthly budget is set at <%="£%.2f" % @account.budget %></p>
 <p>You have <%="£%.2f" % @account.remaining(Date::today.month.to_s, Date::today.year.to_s,) %> of your budget left for this month. </p>
+</div>
 
 <div class="fake_button">
 <a href="/spending-tracker/account/<%=@account.id%>/edit">Change details</a>

@@ -1,11 +1,13 @@
 <h2>More details on <%= @tag.name %></h2>
 
+<div class="info">
 <p>
   You have spent <%= "£%.2f" % @tag.total_spend %> on <%= @tag.name %>.
   On average, you spend y amount on <%= @tag.name %>.
   The most common place you buy this is z.
 </p>
-
+</div>
+<div class="view">
 <table>
   <tr>
     <th>Merchant</th>
@@ -23,3 +25,4 @@
 
 <p>
 <div class="fake_button"><a href="/spending-tracker/tags/<%=@tag.id%>/edit">Change details</a></div>
+</div>

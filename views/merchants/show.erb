@@ -1,11 +1,14 @@
 <h2>More details on <%= @merchant.name %></h2>
 
+<div class="info">
 <p>
   You have spent <%= "£%.2f" % @merchant.total_spend %> at <%= @merchant.name %>.</p>
   <p>On average, you spend <%= "£%.2f" % @merchant.avg_spend %> per visit.</p>
   <p>The most common thing you buy here is z.
 </p>
+</div>
 
+<div class="view">
 <table>
   <tr>
     <th>Category</th>
@@ -23,4 +26,5 @@
 
 <div class="fake_button">
 <a href="/spending-tracker/merchants/<%=@merchant.id%>/edit">Change details</a>
+</div>
 </div>

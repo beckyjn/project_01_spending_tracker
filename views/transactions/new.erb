@@ -1,11 +1,13 @@
 <h2>Add new transaction</h2>
 
+<div class="form">
 <form method="post" action="/spending-tracker/transactions">
   <label for="date">When did you make this purchase?
     <input type='date' id="date" name="date" required/>
     <p>
   <label for="merchant">Where did you make this purchase?</label>
   <select id="merchant" name="merchant_id" required>
+    <option></option>
     <% for merchant in @merchants %>
       <option value="<%= merchant.id%>">
         <%= merchant.name.capitalize%>
@@ -16,6 +18,7 @@
 <p>
     <label for="tag">What did you buy?</label>
     <select id="tag" name="tag_id" required>
+      <option></option>
       <% for tag in @tags %>
         <option value="<%= tag.id%>">
           <%= tag.name.downcase%>
@@ -25,13 +28,12 @@
     <a href="/spending-tracker/tags/new">Add new tag?</a>
 <p>
     <label for="spend">How much did you spend?</label>
-    £<input type="number" step="0.01" id="spend" name="spend" required/>
+    <input type="number" step="0.01" id="spend" name="spend" required/>
 <p>
 
     <input type="hidden" id="account" name="account_id" value="<%=@accounts.first.id%>"/>
     <!-- temporary measure as long as I only have one account in the app - fix later -->
 
   <input type="submit" value="Add to your transactions"/>
-
-
 </form>
+</div>

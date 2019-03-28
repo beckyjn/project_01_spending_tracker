@@ -1,5 +1,6 @@
 <h2>Edit transaction</h2>
 
+<div class="form">
 <form method="post" action="/spending-tracker/transactions/<%= @transaction.id %>">
 
   <label for="merchant">Where did you spend money?</label>
@@ -39,6 +40,7 @@
 
   <input type="submit" value="Save changes"/>
 </form>
+</div>
 
 <div class="delete">
   <p>Would you like to delete this transaction? This action cannot be undone!</p>

@@ -1,10 +1,15 @@
-<h2>Here are all the tags you've added</h2>
+<h2>All of your tags</h2>
+<div class="sub-nav"><a href="/spending-tracker/tags/new">Add new tag</a></div>
 
 <div class="info">
-  This is how much you've spent on each category. Use the drop-down below to filter this by month.
-  </div>
+  This is how much you've spent on each category whilst you have been using this app. Use the drop-down below to filter this by month.
+
+
+
+</div>
 
 <div class="view">
+
 
 <form method="get" action="/spending-tracker/tags/find">
     <label for="month">Select Month: </label>
@@ -49,14 +54,17 @@
     <th></th>
   </tr>
   <% for tag in @tags %>
+  <% total_spend =  tag.decide_filter(@month, @year) %>
+    <% if total_spend > 0 %>
   <tr><td><%= tag.name %> </td>
-  <td><%= "£%.2f" % tag.decide_filter(@month, @year) %></td>
+  <td> <%= "£%.2f" % total_spend %></td>
   <td><a href="/spending-tracker/tags/<%=tag.id%>">view more</a></td>
 
-  </tr>
+</tr>
+
+    <% end %>
   <% end %>
 </table>
 
-</div>
 
-<div class="fake_button"><a href="/spending-tracker/tags/new">Add new tag</a></div>
+</div>

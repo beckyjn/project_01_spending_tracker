@@ -40,7 +40,7 @@ body {
 .nav_bar ul {
   list-style: none;
   display: flex;
-justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .nav_bar li {
@@ -51,36 +51,62 @@ justify-content: flex-start;
 
 .nav_bar a {
   font-family: 'Patua One', sans-serif;
-  font-size: 1em;
+  font-size: 1.05em;
   color: #E8EEF2;
   text-decoration: none;
   text-transform: lowercase;
   padding: 0.5em 0.25em 0.5em 0.25em;
   background-color: #16BAC5;
   border-radius: 5px;
+  margin-top: 0.3em;
 }
 
 .nav_bar a:hover {
   font-family: 'Patua One', sans-serif;
-  font-size: 1em;
+  font-size: 1.05em;
   color: #E8EEF2;
   text-decoration: none;
   text-transform: lowercase;
   padding: 0.5em 0.25em 0.5em 0.25em;
   border-radius: 5px;
   background-color: #91D6DA;
-  color: #E8EEF2;
+  margin-top: 0.3em;
 }
+.sub_nav {
+}
+
+.sub-nav a{
+  padding: 0.4em;
+  background-color: #91D6DA;
+  color: #171D1C;
+  font-family: 'Patua One', sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: lowercase;
+  border-radius: 5px;
+
+}
+.sub-nav a:hover{
+  padding: 0.4em;
+  background-color: #C7D3DD;
+  color: #171D1C;
+  font-family: 'Patua One', sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: lowercase;
+  border-radius: 5px;
+
+}
+
 
 .content {
   padding-top: 50px;
-  padding-left: 1em;
-  width: 97vw;
+  padding-left: 40px;
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   color: #171D1C;
 }
 
-
+/* headings */
  h1 {
    font-family: 'Patua One', sans-serif;
    font-size: 3.5em;
@@ -101,10 +127,16 @@ justify-content: flex-start;
    text-align: center
  }
 
-table {
-  min-width: 15em;
-  width: 70vw;
+ /* tables */
 
+table {
+
+  min-width: fit-content;
+  width: 80%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
 }
 
  th {
@@ -120,11 +152,20 @@ td {
   border-bottom: 2px solid #C7D3DD;
 }
 
-td .emphasis {
-  padding:0.25em;
-  text-align: center;
+tfoot {
   font-weight: bold;
+  background-color: #E8EEF2;
 }
+
+/* forms */
+
+.form input{
+  display: block;
+  padding: 0.4em;
+  margin-top: 0.4em;
+  font-size: 1em;
+}
+
 
 select {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
@@ -137,7 +178,7 @@ select {
 
 input[type=text], [type=number] {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
-  padding: 5px 7px 5px 15px;
+  padding: 5px 7px 5px 7px;
   border: 1px #171D1C;
   border-radius: 5px;
   background-color: #E8EEF2;
@@ -194,27 +235,31 @@ font-size: 1em;
 
 a {
 font-family: 'Source Sans Pro', Helvetica, sans-serif;
-padding: 0.15em 0.5em 0.15em 0.5em;
-border-radius: 5px;
-background-color: #E8EEF2;
 color: #16BAC5;
 font-size: 0.85em;
-text-decoration: none;
 }
 
 a:hover {
 font-family: 'Source Sans Pro', Helvetica, sans-serif;
-padding: 0.15em 0.5em 0.15em 0.5em;
-border-radius: 5px;
-background-color: #E8EEF2;
+
 color: #C7D3DD;
 font-size: 0.85em;
-text-decoration: none;
 }
 
 div .view {
   min-width: 15em;
-  width: 75vw;
+  width: 90vw;
   text-align: center;
   padding-top: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+div .info {
+  min-width: 25em;
+  text-align: center;
+  width: 50vw;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }

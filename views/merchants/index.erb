@@ -1,7 +1,8 @@
-<h2>Here are all the merchants you've added</h2>
+<h2>All of your merchants</h2>
+<div class="sub-nav"><a href="/spending-tracker/merchants/new">Add new merchant</a></div>
 
 <div class="info">
-  This is how much you've spent at each retailer. Use the drop-down below to filter this by month.
+  This is how much you've spent at each retailer whilst you have been using this app. Use the drop-down below to filter this by month.
   </div>
 
 <div class="view">
@@ -23,7 +24,8 @@
           <option value="11">November</option>
           <option value="12">December</option>
     </select>
-    <label for="year">Select Year: </label>
+    and
+    <label for="year"> Year: </label>
     <select id="year" name="year">
       <option value="">(all)</option>
       <option value="2019">2019</option>
@@ -49,14 +51,19 @@
     <th></th>
   </tr>
   <% for merchant in @merchants %>
+  <% total_spend =  merchant.decide_filter(@month, @year) %>
+    <% if total_spend > 0 %>
   <tr><td><%= merchant.name %> </td>
-  <td><%= "£%.2f" % merchant.decide_filter(@month, @year) %></td>
+  <td> <%= "£%.2f" % total_spend %></td>
   <td><a href="/spending-tracker/merchants/<%=merchant.id%>">view more</a></td>
 
-  </tr>
+</tr>
+
+    <% end %>
   <% end %>
 </table>
 
-</div>
 
-<div class="fake_button"><a href="/spending-tracker/merchants/new">Add new merchant</a></div>
+
+
+</div>

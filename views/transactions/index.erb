@@ -1,6 +1,6 @@
 <h2>Here are all of your transactions!</h2>
 
-<div class="budget_info">
+<div class="info">
 <p>You have <%="£%.2f" % @account.remaining(Date::today.month.to_s, Date::today.year.to_s,) %> of your budget left for this month. </p>
 <p>
 <a href="/spending-tracker/account/1/edit">Change your budget?</a></p>
@@ -39,8 +39,10 @@
   <input type="submit" value="Apply filters"/>
   </form>
 
+
   <% unless @transactions.empty? %>
     <table>
+      <thead>
       <tr>
         <th>Shop</th>
         <th>Tag</th>
@@ -48,6 +50,8 @@
         <th>Date</th>
         <th></th>
       </tr>
+      </thead>
+      <tbody>
       <% @view_spend = 0.0 %>
     <% for transaction in @transactions %>
       <tr><td><%= transaction.show_merchant_name %> </td>
@@ -57,11 +61,18 @@
         <td><%= transaction.date_display %></td>
         <td><a href="/spending-tracker/transactions/<%=transaction.id%>/edit">Amend</a></td>
       </tr>
+      </tbody>
     <% end %>
+    <tfoot>
     <tr><td> </td><td class="emphasis">Total: </td><td class="emphasis"><%= "£%.2f" % @view_spend  %></td><td></td><td></td></tr>
+    </tfoot>
     </table>
     <% else %>
-     No transactions to display
+    <p> No transactions to display. </p>
+       <a href="/spending-tracker/transactions">View all transactions?</a>
   <% end %>
+
+
+    <a href="/spending-tracker/transactions">Clear filters?</a>
 
   </div>

@@ -94,7 +94,8 @@ class Tag
     sql = "SELECT transactions.* from transactions
     INNER JOIN tags
     ON transactions.tag_id = tags.id
-    WHERE transactions.tag_id = $1"
+    WHERE transactions.tag_id = $1
+    ORDER BY date DESC"
     values = [@id]
     transaction_data = SqlRunner.run(sql, values)
     transaction = Transaction.map_items(transaction_data)
