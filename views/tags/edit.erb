@@ -1,4 +1,9 @@
-<h2>Edit tag - <%=@tag.name%></h2>
+<div class="page-head">
+<h2> Edit tag - <%=@tag.name%></h2>
+</div>
+<div class="info">
+<img src="/label.png">
+  </div>
 
 <div class="form">
 <form method="post" action="/spending-tracker/tags/<%= @tag.id %>">

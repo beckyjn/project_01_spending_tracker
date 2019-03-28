@@ -73,9 +73,19 @@ body {
   background-color: #91D6DA;
   margin-top: 0.3em;
 }
-.sub_nav {
+
+.nav_bar img {
+  height: 1.5em;
 }
 
+div .page-head {
+    display: flex;
+    justify-content: center;
+}
+
+.sub-nav {
+  text-align: center;
+}
 .sub-nav a{
   padding: 0.4em;
   background-color: #91D6DA;
@@ -85,6 +95,13 @@ body {
   text-decoration: none;
   text-transform: lowercase;
   border-radius: 5px;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  min-width: 20em;
+  width:30vw;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 .sub-nav a:hover{
@@ -96,6 +113,9 @@ body {
   text-decoration: none;
   text-transform: lowercase;
   border-radius: 5px;
+  margin-top: 1em;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -160,12 +180,23 @@ tfoot {
 
 /* forms */
 
+.form {
+  margin-top: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 150px;
+  width: 50vw;
+}
+
+.form label{
+padding-right: 5px;
+}
 .form input{
-  display: block;
   padding: 0.4em;
   margin-top: 0.4em;
   font-size: 1em;
 }
+
 
 
 select {
