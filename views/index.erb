@@ -1,12 +1,12 @@
 <h1> Welcome to the spending tracker!</h1>
-<div>
-<h2>Your budget</h2>
-<div class="info">
+
+<div class="budget-info">
 <p>Your monthly budget is set at <%="£%.2f" % @account.budget %></p>
 <p>You have <%="£%.2f" % @account.remaining(Date::today.month.to_s, Date::today.year.to_s,) %> of your budget left for this month. </p>
+<div class="fake_button">
+  <a href="/spending-tracker/account/<%=@account.id%>/edit">Change details</a>
+</div>
 </div>
 
-<div class="fake_button">
-<a href="/spending-tracker/account/<%=@account.id%>/edit">Change details</a>
-</div>
-</div>
+
+<div class="credit">Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

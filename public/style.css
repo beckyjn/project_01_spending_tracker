@@ -35,6 +35,7 @@ body {
     left: 0px;
     top: 0px;
     width: 100%;
+    z-index: 1;
 }
 
 .nav_bar ul {
@@ -212,6 +213,10 @@ font-size: 0.85em;
     padding: 5px;
     width: 50vw;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #E8EEF2;
+    opacity: 0.75;
 }
 
 .delete input[type=submit] {
@@ -236,14 +241,13 @@ font-size: 1em;
 a {
 font-family: 'Source Sans Pro', Helvetica, sans-serif;
 color: #16BAC5;
-font-size: 0.85em;
+font-size: 0.9em;
 }
 
 a:hover {
 font-family: 'Source Sans Pro', Helvetica, sans-serif;
-
-color: #C7D3DD;
-font-size: 0.85em;
+color: #91D6DA;
+font-size: 0.9em;
 }
 
 div .view {
@@ -262,4 +266,31 @@ div .info {
   padding-bottom: 1em;
   margin-left: auto;
   margin-right: auto;
+}
+
+.budget-info {
+  border: #91D6DA;
+  border-style: solid;
+  border-radius: 5px;
+  margin-top: 2em;
+  padding: 5px;
+  width: 30em;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #E8EEF2;
+  opacity: 0.75;
+}
+
+img {
+  display: inline;
+  height: 3em;
+}
+
+.credit {
+  position: absolute;
+  bottom: 0px;
+  left:0px;
+  font-size: 0.5em;
+
 }
