@@ -9,7 +9,7 @@ also_reload('../models/*')
 
 get '/spending-tracker/account/:id' do #show
   @account = Account.find(params[:id])
-  erb(:"accounts/show")
+  erb(:index)
 end
 
 get '/spending-tracker/account/:id/edit' do #edit

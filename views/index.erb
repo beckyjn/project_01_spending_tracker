@@ -4,6 +4,7 @@
     <img src="/wallet.png"/>
 <p>Your monthly budget is set at <%="£%.2f" % @account.budget %></p>
 <p>You have <%="£%.2f" % @account.remaining(Date::today.month.to_s, Date::today.year.to_s,) %> of your budget left for this month. </p>
+<p><%= @account.budget_warnings(Date::today.month.to_s, Date::today.year.to_s) %></p>
 <div class="sub-nav">
   <a href="/spending-tracker/account/<%=@account.id%>/edit">Change details</a>
 </div>
