@@ -1,4 +1,4 @@
-require('pry')
+
 require_relative('../models/merchant.rb')
 require_relative('../models/tag.rb')
 require_relative('../models/account.rb')
@@ -35,15 +35,3 @@ transaction2 = Transaction.new({
   "tag_id" => tag2.id, "merchant_id" => merchant2.id,
   "account_id" => account1.id, "spend" => 10.50, "date" => Date.new(2019,03,20)})
 transaction2.save
-
-
-
-
-
-
-
-
-
-
-binding.pry
-nil

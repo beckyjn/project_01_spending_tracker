@@ -68,16 +68,6 @@ class Account
     return remaining_budget
   end
 
-
-  def self.map_items(account_data)
-    return account_data.map { |account| Account.new(account) }
-  end
-
-  def self.delete_all
-  sql = "DELETE FROM accounts"
-  SqlRunner.run(sql)
-  end
-
   def budget_warnings(month, year)
     case
     when self.remaining(month, year) <= 0
@@ -88,5 +78,16 @@ class Account
       return "Uh oh! Your funds are getting low."
     end
   end
+
+
+  def self.map_items(account_data)
+    return account_data.map { |account| Account.new(account) }
+  end
+
+  def self.delete_all
+  sql = "DELETE FROM accounts"
+  SqlRunner.run(sql)
+  end
+
 
 end
